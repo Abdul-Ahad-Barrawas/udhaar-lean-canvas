@@ -441,7 +441,7 @@ svg text { font-family: var(--font); }
     <span class="fragment rel-step" data-phase="5"></span>
   </div>
   <aside class="notes">
-    [Phase 0, ~10 s] Here is a typical distributor: one supplier above, and ten retailers who buy on credit. This is an illustrative picture, not data.
+    [~60 s for the whole slide · setup] Here is a typical distributor: one supplier above, and ten retailers who buy on credit. This is an illustrative picture, not data.
 
     [Click 1] Goods go out on credit, udhaar, and every retailer's ledger starts at day zero.
 
@@ -1517,12 +1517,10 @@ svg text { font-family: var(--font); }
 
   /* ---------- Number formatting for counters ---------- */
 
-  // Formats a counter's in-between value for display.
-  // `el.dataset` carries: count (target), decimals, prefix, suffix.
-  // TODO(Abdul): decide how Indian figures should read *while counting*.
-  //   - en-IN grouping gives "₹2,00,000" (lakh style) vs en-US "₹200,000".
-  //   - Should decimals show during the count (₹3.7 → ₹8.1) or snap at the end?
-  //   - The final frame always restores the authored HTML text exactly.
+  // Formats a counter's in-between value for display: Indian (lakh) grouping,
+  // e.g. "2,00,000", with decimals shown throughout the count. `el.dataset`
+  // carries count (target), decimals, prefix, suffix. The final frame always
+  // restores the authored HTML text exactly.
   function formatCount(value, el) {
     const decimals = Number(el.dataset.decimals || 0);
     const n = value.toLocaleString('en-IN', {
